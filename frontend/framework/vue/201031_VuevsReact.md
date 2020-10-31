@@ -5,9 +5,9 @@
 ------
 
 ## 목차
- 1. [다른 철학](#Different-Philosophies)
- 2. [한 파일 컴포넌트](#Single-File-Components)
- 3. [공식적으로 지원되는 관련 라이브러리](#Officially-Supported-Related-Libraries)
+ 1. [다른 철학](#1-Different-Philosophies)
+ 2. [한 파일 컴포넌트](#2-Single-File-Components)
+ 3. [공식적으로 지원되는 관련 라이브러리](#3-Officially-Supported-Related-Libraries)
 
 
 ------
