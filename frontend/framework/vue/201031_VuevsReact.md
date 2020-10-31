@@ -178,7 +178,7 @@ export default {
 
 ------
 
-## [6.](#목차) Slots
+<!-- ## [6.](#목차) Slots
 
 ## [7.](#목차) Directive Modifiers
 
@@ -190,4 +190,4 @@ export default {
 
 ## [11.](#목차) Video
 
-## [12.](#목차) Closing Thoughts
+## [12.](#목차) Closing Thoughts -->
