@@ -1,4 +1,4 @@
-# 뷰 vs 리액트(작성중)
+# 뷰 vs 리액트
 
  > 이 문서는 [원본](https://hswolff.com/blog/what-vuejs-does-better-than-react/) 을 읽고 작성된 문서입니다
 
