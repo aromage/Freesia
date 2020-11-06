@@ -313,7 +313,9 @@ function App() {
 React.createElement(form, { onSubmit: preventWrapper(onSubmit) });
 ```
 
-하지만, 이는 `React`의 정신이 아니다. 그럼에도 불구하고 원저는 이런 형식이 훨씬 생산성 있다고 생각한다. 그리고 이러한 기능들은, `Vue modifier`에서 더 잘 제공된다.
+하지만, 이는 `React`의 철학에 어긋난다.  
+
+ 그럼에도 불구하고 원저는 이런 형식이 훨씬 생산성 있다고 생각하며, 이러한 기능들은 `Vue modifier`에서 더 잘 제공된다.
 
 ```html
 <!-- only call `submit()` when the `key` is `Enter` -->
