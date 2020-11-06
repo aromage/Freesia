@@ -12,22 +12,26 @@
  4. [스타일 가이드](#4-Style-Guide)
  5. [클래스와 스타일 바인딩](#5-Class-and-Style-Bindings)
  6. [Slots](#6-Slots)
+ 7. [디렉티브](#7-Directive-Modifiers)
+ 8. [Form Input Bindings](#8-Form-Input-Bindings)
+ 9. [사용자 지정 디렉티브](#9-Custom-Directives)
+ 10. [타입스크립트](#10-Written-in-TypeScript)
+ 11. [마치며](#11-Closing-Thoughts)
 
 ------
 
 ## [1.](#목차) Different Philosophies
 
-Vue와 React사이의 중요한 차이점들 중 하나는 지향하는 바가 다른 것이다
-
-홈페이지에 가보면 스스로를 다음과 같이 묘사하고 있다
+Vue와 React는 서로 지향하는 바가 다르다, 이는 각각의 홈페이지에서
+묘사하는 바를 보면 알 수 있다.
 
 * React : "a JavaScript **library** for building user interfaces"
 * Vue : "progressive JavaScript **framework**"
 
-원저는 위의 사항을 이 글을 읽는 동안 각각의 UI 프레임워크들이 작업들을 수행하는 방법과 이유의 차이에 대해서 근본적인 고찰을 하고 계속 상기 하도록 강조하고 싶었다고 한다
+원저는 위의 문구를 이 문서를 읽는동안 계속 상기하면서 읽었으면 좋겠다고 했다
 
-**FrameWork**는 역사적으로 그들이 제공하거나 요구하는 사항에 대해서 더 포괄적이고 철저하다
-**Library**는 FrameWork에 비해 덜 포괄적이고 덜 수행하지만 목표로 하는 기능에 대해서는 확실하게 작동한다
+**FrameWork** 더 포괄적이고 넓은 영역을 제공해준다.
+**Library**는 덜 포괄적이나 제공하는 기능에 대해서는 완벽한 완성도를 보여준다
 
 서로가 묘사하는 바를 인지하고 이를 기반으로 아래 사항들에 대해서 생각해보면서 읽으면 좋을 것 같다
 
@@ -209,14 +213,227 @@ function App() {
 }
 ```
 
-<!-- ## [7.](#목차) Directive Modifiers
+위 코드는 잘 동작하지만, `props`내의 컨텐츠가 커지면 너무 난해해 진다
+그런 점에서 `Vue`의 `Slot`은 다른 관점에서 하위 컴포넌트를 제공한다.
+
+원저는 이 API가 더 깔끔하다고 생각하는 것 같다
+
+```html
+<!-- A Vue.js component template named "base-layout" -->
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+</div>
+
+<!-- When "base-layout" is used -->
+<base-layout>
+  <template v-slot:header> <!-- #header로도 사용할 수 있다 -->
+    <h1>Here might be a page title</h1>
+  </template>
+
+  <template v-slot:default> <!-- #default로도 사용할 수 있다 -->
+    <p>A paragraph for the main content.</p>
+    <p>And another one.</p>
+  </template>
+
+  <template v-slot:footer> <!-- #footer로도 사용할 수 있다 -->
+    <p>Here's some contact info</p>
+  </template>
+</base-layout>
+```
+
+`Vue`는 컴포넌트 내의 콘텐트를 깔끔하게 표시하기 위해 `Slot`을 사용한다
+위 코드는 `Slot`과 그를 사용한 코드, 그리고 약어 `#`에 대한 설명이다
+
+------
+
+## [7.](#목차) Directive Modifiers
+
+`Vue`는 디렉티브라고 불리는 기능을 가지고 있는데, 이게 굉장히 좋다
+
+`Directive`는 `Vue template내에서 사용할 수 있는` **`v-`접두를 가진 특별한 attribute**를 뜻한다
+
+> `A directive's job is to reactively apply side effects to the DOM when the value of its expression changes`(번역이 어려워 그대로 작성하였음)
+
+예를 들어보자면 
+
+```html
+<!-- render설정을 할 수도 있고 -->
+// If "seen" variable is false then this p tag is not rendered
+<p v-if="seen">Now you see me</p> 
+
+<!-- 이벤트 핸들러로도 사용 가능하다  -->
+<!-- full syntax -->
+<a v-on:click="doSomething"> ... </a>
+
+<!-- shorthand -->
+<a @click="doSomething"> ... </a>
+```
+
+`Directive`는 또한 수정자(modifier)를 지원한다
+이는 일반적인일을 일반적인 디렉티브로 행함에 있어서 훨씬 개발자 친화적이다
+
+아래 예시와 같이 `v-on` 디렉티브에 대해서 많은 수정자들이 있다
+
+```html
+<!-- the click event's propagation will be stopped -->
+<a @click.stop="doThis"></a>
+
+<!-- the submit event will no longer reload the page -->
+<form @submit.prevent="onSubmit"></form>
+
+<!-- modifiers can be chained -->
+<a @click.stop.prevent="doThat"></a>
+
+<!-- just the modifier -->
+<form @submit.prevent></form>
+
+...and more!
+```
+
+이와같은 일을 `React`에서 하려면 매번 helper 함수를 만들거나 custom 컴포넌트를 생성해야 한다  
+나쁘진 않지만, `Directive`에 비해서 깔끔한 느낌은 아니다  
+
+`React`에서 과연 다음과 같은 코드가 Babel JSX에서 해석되도록 만들었다고 치자
+
+```html
+<form onSubmit.prevent={onSubmit} />
+```
+
+이 코드는 다음과 같이 번역될 것이다
+
+```javascript
+React.createElement(form, { onSubmit: preventWrapper(onSubmit) });
+```
+
+하지만, 이는 `React`의 정신이 아니다. 그럼에도 불구하고 원저는 이런 형식이 훨씬 생산성 있다고 생각한다. 그리고 이러한 기능들은, `Vue modifier`에서 더 잘 제공된다.
+
+```html
+<!-- only call `submit()` when the `key` is `Enter` -->
+<input @keyup.enter="submit" />
+
+<input @keyup.page-down="onPageDown" />
+```
+
+이렇게 말이다!
+
+------
 
 ## [8.](#목차) Form Input Bindings
 
+`v-model`디렉티브는 `form input element`에 데이터를 바인딩 할 때 신기한 특징이 있다
+
+공식문서에서는, v-model 내부적으로 각각 다른 `input element`에 대해서 개별적인 속성과 개별 이벤트를 내보낸다고 설명한다
+
+ | input element | attribute | event |
+ | --- | --- | --- |
+ | text<br>textarea | value | input |
+ | checkboxes<br> radiobuttons | checked | change |
+ | select fields | value | change |
+
+이 기능이 좋은점은, 데이터 동기화에 신경 쓸 필요가 없고, 데이터가 처리가 된다는 점이다
+
+이제 이 바인딩 기능을 `React`와 비교해보자
+
+```v
+// Input
+////////
+
+// React
+<input type="input" value={message} onChange={onChange} />
+
+// Vue.js
+<input type="input" v-model="message" />
+
+// Checkboxes and Radiobuttons
+////////
+
+// React
+<input type="checkbox" checked={message != null} onChange={onChange} />
+
+// Vue.js
+<input type="checkbox" v-model="message" />
+
+// Select
+////////
+
+// React
+<select value={message} onChange={onChange}>
+	<option>A</option>
+</select>
+
+// Vue.js
+<select v-model="message">
+	<option>A</option>
+</select>
+```
+
+위 코드를 보면 패턴이 있다.
+ * `React`는 데이터가 실제로 어떻게 세팅되는지 그리고 어떻게 변하는지에 대해서 학습하는 것을 요구한다. 
+ * `Vue`는 이런 것들에 대해 추상적으로 제공하여, 이런 것들에 대해서 고려하지 않아도 되게 해준다.
+
+------
+
 ## [9.](#목차) Custom Directives
+
+좋은 프레임워크에 항상 있듯이 `vue`에서도 직접 디렉티브를 커스터마이징 하여 사용할 수 있다
+
+`Vue`에서는 "코드 재사용성과 추상화의 기본 양식은 컴포넌트" 라고 설명한다
+하지만, 다음 코드는 사용자지정 디렉티브가 더 나을 때가 있다는 좋은 예시이다
+
+```v
+const app = Vue.createApp({})
+// Register a global custom directive called `v-focus`
+app.directive('focus', {
+  // When the bound element is mounted into the DOM...
+  mounted(el) {
+    // Focus the element
+    el.focus()
+  }
+})
+
+<input v-focus />
+```
+
+위의 `v-focus`디렉티브는 입력 element에 자동으로 `focus`상태를 부여한다
+`React`에서는 위의 작업을 위해서 커스텀 컴포넌트를 작성해야 하는데, 너무 비효율 적이다
+
+> **생각해볼 사항**  
+> `React`에서 효율적으로 구현한 코드가 있을텐데 찾아보자(아직 안찾아봄)
+
+------
 
 ## [10.](#목차) Written in TypeScript
 
-## [11.](#목차) Video
+최근에 `Vue`는 **`Typescript`**로 처음부터 다시 제작되었다  
+원저는 프레임워크의 `Typescript`지원이 최고 수준임을 암시한다고 한다
 
-## [12.](#목차) Closing Thoughts -->
+> **생각해볼 사항**  
+> 아직 `Typescript`에 대해서 많이 고려해보지 않아 `React`와 어떤점에서 차이가 있는지 알 수 없다
+
+------
+
+## [11.](#목차) Closing Thoughts
+
+아래 글은 원저의 정리글이기 때문에 원문을 그대로 들고 옴
+
+[영상보러가기](https://youtu.be/RFlQ8HP8Tr4)(이 글 원저가 만든 Vue가 더 좋은이유에 대한 영상)
+
+After all that am I going to abandon React and start using Vue.js exclusively? No. I still very much enjoy the "library-ness" of React and frankly I'm already very proficient at writing React applications.
+
+However I would love to see React grab some inspiration from Vue.js and incorporate some of these great ideas into React. If I had to choose just one from this list it's absolutely the style guide. I would love to see React have an officially supported and maintained style guide.
+
+Hopefully I've opened your eyes to some things that you didn't know Vue.js did! I was certainly surprised to find myself really enjoying the way Vue.js did things!
+
+(결국 React를 포기하고 Vue를 단독으로 사용할 것인가? 아니다, 난 여전히 React의 라이브러리성을 좋아하며, 난 이미 리액트로 어플리케이션을 만드는데 익숙합니다
+
+하지만, React가 Vue로부터 영감을 얻고, 위에서 설명한 좋은 아이디어들을 수용해서 React에 통합하는 것을 보고 싶습니다. 위 목록중 하나를 선택한다면 무조건 스타일 가이드 입니다. React에서 지원되는 공식적인 스타일가이드를 보고 싶습니다.
+
+Vue가 했던 일들 중에 몰랐던 것들에 대해서 눈을 떳으면 좋겠습니다. 난 스스로가 Vue가 보여주는 것들을 즐기고 있는게 놀랍습니다.)
