@@ -1,8 +1,4 @@
-# 이 곳은?
-
-> `기억보단 기록을` 문구를 보고 하루하루 활동을 적기 위한 저장소
+# wiki로 이동
 
 
-
- 1. [Typescript](./typescript/README.md)
- 2. [Vue](./frontend/framework/vue/README.md)
+[이곳](https://github.com/aromage/Freesia/wiki) 으로 이전했습니다
