@@ -31,6 +31,15 @@ function handleScroll() {
     changeBgImg.style.filter = 'none';
         changeBgImg.style.opacity = `1`;
   }
+
+  // const videoSection = document.querySelector('.video-frame-wrap');
+  // const video = document.querySelector('video');
+  // const {top : videoTop} = videoSection.getBoundingClientRect();
+  // console.log(video.currentTime);
+  // if(videoTop < 0) {
+  //   const rate = (-1) * top;
+  //   video.currentTime = rate;
+  // }
 }
 
 function requestTick() {
