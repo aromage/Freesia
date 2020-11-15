@@ -1,6 +1,7 @@
 .container {
     margin: auto;
-    width: 760px;
+    margin-top: 200px;
+    width: 700px;
   }
   .list {
     display: flex;

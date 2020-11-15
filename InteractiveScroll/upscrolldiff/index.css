@@ -1,0 +1,56 @@
+body {
+  font-size: 1.3em;
+  margin: auto;
+  width: 760px;
+}
+.up-on-scroll {
+  transition: all 0.7s;
+}
+.black-bg {
+  background: black;
+  color: white;
+  padding: 20px;
+}
+.pb-300 {
+  padding-bottom: 300px;
+}
+.min-height-500 {
+  min-height: 500px;
+}
+.need-margin {
+  margin: 20px 20px 200px;
+}
+section > h2 {
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 20px 0;
+  z-index: 2;
+  background: black;
+}
+
+.diff-desc-image-wrap > div {
+  display: flex;
+  width: 100%;
+  padding-top: 50px;
+}
+.diff-desc-image-wrap > div .desc {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  flex: 1 0 0%;
+}
+.diff-desc-image-wrap > div .desc > p {
+  margin-bottom: 250px;
+}
+.diff-desc-image-wrap > div .desc > p:last-child {
+  margin-bottom: 100px;
+}
+.diff-desc-image-wrap .image-wrap {
+  flex: 1 0 0%;
+  max-width: 40vw;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}

@@ -57,3 +57,6 @@ transition에서는 다룰 수 있는 속성이 다섯 가지가 있다
  * **fixed** : 고정위치 - 브라우저화면 기준(부모기준 아님)
  * **sticky** : 보통은 `static`과 같은 상태이지만, 스크롤 위치가 특정 임계점인 경우 `fixed`속성을 부여받는 속성
  [레진기술블로그-Sticky](https://tech.lezhin.com/2019/03/20/css-sticky)
+
+
+ [좌표구하기](https://mommoo.tistory.com/85)
