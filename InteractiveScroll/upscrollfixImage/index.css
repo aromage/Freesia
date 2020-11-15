@@ -3,6 +3,15 @@ body {
   margin: auto;
   width: 760px;
 }
+section > h2 {
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 0;
+  z-index: 2;
+  background: black;
+}
+
 .up-on-scroll {
   transition: all 0.7s;
 }
@@ -11,32 +20,11 @@ body {
   color: white;
   padding: 20px;
 }
-.pb-300 {
-  padding-bottom: 300px;
-}
-.min-height-500 {
-  min-height: 500px;
-}
-.need-margin {
-  margin: 20px 20px 200px;
-}
-section > h2 {
-  position: sticky;
-  top: 0;
-  left: 0;
-  padding: 20px 0;
-  z-index: 2;
-  background: black;
-}
-
 .slide-up-wrap {
   height: 400vh;
   align-items: center;
   justify-content: center;
   margin-top: 40px;
-}
-.slide-up-wrap < h2 {
-  padding-bottom: 50vh;
 }
 
 .slide-up-wrap > div {
@@ -50,6 +38,7 @@ section > h2 {
   height: 100vh;
   overflow: hidden;
 }
+
 .slide-up-wrap > div > img {
   width: 100%;
   height: auto;

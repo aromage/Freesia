@@ -20,10 +20,12 @@ function handleScroll() {
     }
   });
   
+  //이미지 스크롤 속도를 늦춤 - 스크롤마다 위치를 아래로 움직임으로써
   const productImg = document.querySelector('.diff-desc-image-wrap .image-wrap'); 
   const productImgRect = productImg.getBoundingClientRect();
+  console.log(productImgRect.top);
   if (productImgRect.top < 0) {
-    productImg.style.transform = `translateY(${-1 * productImgRect.top * 0.8 }px)` 
+    productImg.style.transform = `translateY(${-1 * productImgRect.top * 0.8}px)` 
   } else {
     productImg.style.transform = 'none';
   }

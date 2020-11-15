@@ -22,9 +22,9 @@ function handleScroll() {
 
   const changeBgSection = document.querySelector('.background-change-wrap');
   const changeBgImg = document.querySelector('.background-change-wrap > div');
-  const {top: bgTop, height: bgHeight} = changeBgSection.getBoundingClientRect();
-  if (bgTop < 0) {
-    const rate = (-1) * bgTop / 4;
+  const {top} = changeBgSection.getBoundingClientRect();
+  if (top < 0) {
+    const rate = (-1) * top;
     changeBgImg.style.filter = `grayscale(${rate}%)`;
     changeBgImg.style.opacity = `${(100-rate/5) / 100}`;
   } else {

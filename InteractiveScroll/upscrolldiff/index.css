@@ -29,6 +29,10 @@ section > h2 {
   background: black;
 }
 
+.diff-desc-image-wrap {
+  padding-bottom: 60vh;
+}
+
 .diff-desc-image-wrap > div {
   display: flex;
   width: 100%;
@@ -41,11 +45,9 @@ section > h2 {
   flex: 1 0 0%;
 }
 .diff-desc-image-wrap > div .desc > p {
-  margin-bottom: 250px;
-}
-.diff-desc-image-wrap > div .desc > p:last-child {
   margin-bottom: 100px;
 }
+
 .diff-desc-image-wrap .image-wrap {
   flex: 1 0 0%;
   max-width: 40vw;
@@ -53,4 +55,9 @@ section > h2 {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  
+}
+.diff-desc-image-wrap .image-wrap > img {
+  object-fit: scale-down;
+  width: 600px;
 }
