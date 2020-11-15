@@ -1,0 +1,58 @@
+.test {
+    margin : 100px;
+    background-color: #000;
+    height: 100px;
+    width: 150px;
+    /* transition: width 1s, height 1s; */
+    transition: transform 2s;
+    transition-timing-function : ease;
+}
+.test:hover { 
+    /* width: 200px; 
+    height: 300px;  */
+    /* transform: rotateZ(180deg); */
+}
+
+span, div {
+    background: yellow;
+  }
+  
+  /* .top {
+    position: relative;
+    top: 5px;
+    z-index: 1;
+  }
+  
+  .right {
+    position: relative;
+    right: 5px;
+  }
+  
+  .bottom {
+    position: relative;
+    bottom: 5px;
+  }
+  
+  .left {
+    position: relative;
+    left: 5px;
+  } */
+
+
+  #absolute {
+    background: yellow;
+    position: absolute;
+    right: 0;
+  }
+  
+  #parent {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: skyblue;
+  }
+  
+  #child {
+    position: absolute;
+    right: 0;
+  }
