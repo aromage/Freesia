@@ -25,9 +25,9 @@ function handleScroll() {
   const {top} = changeBgSection.getBoundingClientRect();
   if (top < 0) {
     const rate = (-1) * top;
-    changeBgImg.style.filter = `grayscale(${rate}%)`;
     changeBgImg.style.opacity = `${(100-rate/5) / 100}`;
   } else {
+    // changeBgImg.style.filter = `grayscale(${rate}%)`;
     changeBgImg.style.filter = 'none';
         changeBgImg.style.opacity = `1`;
   }

@@ -12,22 +12,19 @@
           </video>
         </section> -->
         <section class="black-bg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+          prototype은 실행컨텍스트, this, scope chain과 함께 javascript의 근본적인 부분 중 하나이다. prototype을 이해하고 있어야 javascript 에서 객체들이 어떤 요소를 사용할 수 있는지, 어떤 방식으로 상속되는지에 대해 이해할 수 있다.
         </section>
         <section class="background-change-wrap">
           <div>
             <h2>Color, Opacity 예제</h2>
-            <img src="https://images.unsplash.com/photo-1495429391702-9cf0b245ba91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60" alt="" />
+            <img src="prototype.jpeg" alt="" />
           </div>
         </section>
         <section class="need-margin min-height-500 up-on-scroll">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          방금 본 그림에서처럼 javascript에서 instance를 생성하게되면 원래 Object의 prototype을 참조하게 되는데 이 속성이 __proto__이다. 원래라면 instance에서 .__proto__ 를 통하여 원래 Object의 메소드나 속성에 접근해야 하지만, javascript에서는 .__proto__속성은 생략하여 사용이 가능하다
         </section>
         <section class="need-margin min-height-500 up-on-scroll">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.cat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </section>
-        <section class="need-margin min-height-500 up-on-scroll">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+          상속의 경우 하위 Object의 prototype이 상위 Object의 prototype을 참조한다. <br>이 때도 .prototype은 생략이 가능하다. (생략이 됨으로써 scope chain과 비슷한 작동 방식을 보인다) 이 때 중요한 점은 prototype을 상속받는 것이지 Object를 상속받는 것이 아니기 때문에 상위 Object에서 prototype에 선언되어있지 않은 property 혹은 method는 하위 Object나 instance에서 접근할 수 없다. 이런 속성 혹은 메소드를 static property, static method 라고 한다
         </section>
       </div>
     </div>
